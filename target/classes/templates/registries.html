@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>registries</title>
+    <th:block th:include="layout/header"></th:block>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(registries)}">
+        <h2>All registries</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="registry : ${registries}">
+                <td th:text="${registry.id}">Id</td>
+                <td th:text="${registry.name}">Name</td>
+                <td th:text="${registry.address}">certidao</td>
+                <td><a th:href="${'/registries/edit/' + registry.id}" class="btn btn-default">Edit</a></td>
+                <td><a th:href="${'/registries/delete/' + registry.id}" class="btn btn-danger">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
